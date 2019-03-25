@@ -6,8 +6,8 @@ from gym.envs.registration import register
 import matplotlib.pyplot as plt
 import imageio
 
-#from environments.envShape import allRooms
 from envShape import allRooms
+
 
 class GridRooms(gym.Env):
     """
@@ -118,9 +118,6 @@ class GridRooms(gym.Env):
     def seed(self, seed=None):
         self.np_random, seed = seeding.np_random(seed)
 
-    def retPos(self):
-        return self.pos
-
     def step(self, action):
         self.steps += 1
         x = self.pos[0]
@@ -197,7 +194,7 @@ class GridRooms(gym.Env):
 
 register(
     id='FourRooms-v0',
-    entry_point='gridEnv.env:GridRooms',
+    entry_point='gridenv:GridRooms',
     kwargs={'roomName': 'Four-rooms', 'dense': True,
             'randomStart': True, 'randomGoal': False}
 )
